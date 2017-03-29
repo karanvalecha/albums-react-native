@@ -1,15 +1,15 @@
 // Import libs for making a component
 
 import React, { Component } from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, Linking } from 'react-native';
 import Card from './Card.js';
 import CardSection from './CardSection';
-
+import Button from './Button';
 
 // Make a component
 
 const AlbumDetail = ({ album }) => {
-  const { title, artist, thumbnail_image, image } = album;
+  const { title, artist, thumbnail_image, image, url } = album;
   const {
     headerContentStyle,
     thumbnailStyle,
@@ -35,6 +35,12 @@ const AlbumDetail = ({ album }) => {
 
       <CardSection>
         <Image style={imageStyle} source={{uri: image}} />
+      </CardSection>
+
+      <CardSection>
+        <Button onPress={() => { Linking.openURL(url) }}>
+          Buy Now
+        </Button>
       </CardSection>
     </Card>
   )
